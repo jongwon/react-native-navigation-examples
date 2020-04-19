@@ -61,6 +61,8 @@ const CustomDrawer = ({ navigation }) => {
       />
       <DrawerItem label="보드" onPress={() => goToStack("boardstack")} />
       <DrawerItem label="메모리" onPress={() => goToStack("memorystack")} />
+      <DrawerItem label="에누리" onPress={() => goToStack("storea")} />
+      <DrawerItem label="다나와" onPress={() => goToStack("storeb")} />
       <DrawerItem label="사진 리스트" onPress={() => goToStack("imagestack")} />
       <DrawerItem
         label="이 앱에 대하여"

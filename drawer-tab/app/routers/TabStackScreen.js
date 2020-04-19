@@ -6,6 +6,7 @@ import BoardListScreen from "../screens/BoardListScreen";
 import MemoryListScreen from "../screens/MemoryListScreen";
 import CpuDetailsScreen from "../screens/CpuDetailsScreen";
 import MenuButton from "./MenuButton";
+import StoreTabStackScreen from "./StoreTabStackScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -59,12 +60,29 @@ const MemoryStackScreen = ({ navigation }) => {
   );
 };
 
+const StoreStack = createStackNavigator();
+const StoreStackScreen = ({ navigation }) => {
+  return (
+    <StoreStack.Navigator>
+      <StoreStack.Screen
+        name="storetab"
+        component={StoreTabStackScreen}
+        options={{
+          title: "온라인 쇼핑몰",
+          headerLeft: () => <MenuButton />,
+        }}
+      />
+    </StoreStack.Navigator>
+  );
+};
+
 const TabStackScreen = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="cpustack" component={CpuStackScreen} />
       <Tab.Screen name="boardstack" component={BoardStackScreen} />
       <Tab.Screen name="memorystack" component={MemoryStackScreen} />
+      <Tab.Screen name="storestack" component={StoreStackScreen} />
     </Tab.Navigator>
   );
 };
