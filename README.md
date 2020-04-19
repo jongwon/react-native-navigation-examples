@@ -4,7 +4,7 @@
 
 ### 샘플1 : 탭 화면 구성하기
 
-<img src="./images/1-tab-stack.png">
+<img src="./images/1-tab-stack.png" style="max-width:300px">
 유튜브 라이브 코딩 : https://www.youtube.com/watch?v=KL2SpTY9pl4
 
 ### 샘플2 : Drawer 화면 구성하기
