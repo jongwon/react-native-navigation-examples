@@ -54,11 +54,11 @@
 		"body": [
 			"const ${1}Stack = createStackNavigator();",
 			"const ${1}StackScreen = ({ navigation }) => {",
-				"	return (",
-				"		<${1}Stack.Navigator>",
-				"			 <${1}Stack.Screen name=\"\" component={} options={{}} />",
-				"	  </${1}Stack.Navigator>",
-				"	);",
+			"	return (",
+			"		<${1}Stack.Navigator>",
+			"			 <${1}Stack.Screen name=\"\" component={} options={{}} />",
+			"	  </${1}Stack.Navigator>",
+			"	);",
 			"};",
 		],
 		"description": "스택 스크린"
