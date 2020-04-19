@@ -5,7 +5,7 @@ import CpuListScreen from "../screens/CpuListScreen";
 import BoardListScreen from "../screens/BoardListScreen";
 import MemoryListScreen from "../screens/MemoryListScreen";
 import CpuDetailsScreen from "../screens/CpuDetailsScreen";
-import { MenuButton } from "./DrawerStackScreen";
+import MenuButton from "./MenuButton";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +17,7 @@ const CpuStackScreen = ({ navigation }) => {
         name="cpulist"
         component={CpuListScreen}
         options={{
-          headerLeft: () => <MenuButton navigation={navigation} />,
+          headerLeft: () => <MenuButton />,
         }}
       />
       <CpuStack.Screen
@@ -37,7 +37,7 @@ const BoardStackScreen = ({ navigation }) => {
         name="boardlist"
         component={BoardListScreen}
         options={{
-          headerLeft: () => <MenuButton navigation={navigation} />,
+          headerLeft: () => <MenuButton />,
         }}
       />
     </BoardStack.Navigator>
@@ -52,7 +52,7 @@ const MemoryStackScreen = ({ navigation }) => {
         name="memorylist"
         component={MemoryListScreen}
         options={{
-          headerLeft: () => <MenuButton navigation={navigation} />,
+          headerLeft: () => <MenuButton />,
         }}
       />
     </MemoryStack.Navigator>

@@ -1,35 +1,17 @@
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem,
+} from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabStackScreen from "./TabStackScreen";
 import ImageListScreen from "../screens/ImageListScreen";
 import AboutScreen from "../screens/AboutScreen";
 import Icon from "react-native-vector-icons/Ionicons";
-import { TouchableOpacity } from "react-native";
+import MenuButton from "./MenuButton";
 
 const Drawer = createDrawerNavigator();
-
-export const MenuButton = ({ navigation }) => {
-  const openMenu = () => {
-    navigation.openDrawer();
-  };
-
-  return (
-    <TouchableOpacity>
-      <Icon
-        name="ios-menu"
-        onPress={openMenu}
-        style={{
-          fontSize: 30,
-          marginLeft: 10,
-          marginTop: 5,
-          paddingLeft: 5,
-          paddingRight: 5,
-        }}
-      />
-    </TouchableOpacity>
-  );
-};
 
 const ImageStack = createStackNavigator();
 const ImageStackScreen = ({ navigation }) => {
@@ -39,7 +21,7 @@ const ImageStackScreen = ({ navigation }) => {
         name="imagelist"
         component={ImageListScreen}
         options={{
-          headerLeft: () => <MenuButton navigation={navigation} />,
+          headerLeft: () => <MenuButton />,
         }}
       />
     </ImageStack.Navigator>
@@ -54,15 +36,47 @@ const AboutStackScreen = ({ navigation }) => {
         name="about"
         component={AboutScreen}
         options={{
-          headerLeft: () => <MenuButton navigation={navigation} />,
+          headerLeft: () => <MenuButton />,
         }}
       />
     </AboutStack.Navigator>
   );
 };
+
+const CustomDrawer = ({ navigation }) => {
+  const goToStack = (stackName) => {
+    navigation.navigate(stackName);
+  };
+  return (
+    <DrawerContentScrollView>
+      <DrawerItem
+        icon={() => <Icon name="ios-home" size={24} />}
+        label="CPU"
+        onPress={() => goToStack("cpustack")}
+        style={{
+          borderBottomWidth: 1,
+          borderRadius: 0,
+          borderColor: "#ccc",
+        }}
+      />
+      <DrawerItem label="보드" onPress={() => goToStack("boardstack")} />
+      <DrawerItem label="메모리" onPress={() => goToStack("memorystack")} />
+      <DrawerItem label="사진 리스트" onPress={() => goToStack("imagestack")} />
+      <DrawerItem
+        label="이 앱에 대하여"
+        onPress={() => goToStack("aboutstack")}
+      />
+    </DrawerContentScrollView>
+  );
+};
+
 const DrawerStackScreen = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerContent={({ navigation }) => (
+        <CustomDrawer navigation={navigation} />
+      )}
+    >
       <Drawer.Screen name="tabstack" component={TabStackScreen} />
       <Drawer.Screen name="imagestack" component={ImageStackScreen} />
       <Drawer.Screen name="aboutstack" component={AboutStackScreen} />
