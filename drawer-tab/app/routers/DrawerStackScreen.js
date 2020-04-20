@@ -44,25 +44,79 @@ const AboutStackScreen = ({ navigation }) => {
 };
 
 const CustomDrawer = ({ navigation }) => {
-  const goToStack = (stackName) => {
-    navigation.navigate(stackName);
+  const goToStack = (screenName, params) => {
+    navigation.navigate(screenName, params);
   };
+
   return (
     <DrawerContentScrollView>
       <DrawerItem
         icon={() => <Icon name="ios-home" size={24} />}
         label="CPU"
-        onPress={() => goToStack("cpustack")}
+        onPress={() =>
+          goToStack("tabstack", {
+            screen: "cpustack",
+            params: {
+              screen: "cpudetails",
+            },
+          })
+        }
         style={{
           borderBottomWidth: 1,
           borderRadius: 0,
           borderColor: "#ccc",
         }}
       />
-      <DrawerItem label="보드" onPress={() => goToStack("boardstack")} />
-      <DrawerItem label="메모리" onPress={() => goToStack("memorystack")} />
-      <DrawerItem label="에누리" onPress={() => goToStack("storea")} />
-      <DrawerItem label="다나와" onPress={() => goToStack("storeb")} />
+      <DrawerItem
+        label="보드"
+        onPress={() =>
+          goToStack("tabstack", {
+            screen: "boardstack",
+            params: {
+              screen: "boardlist",
+            },
+          })
+        }
+      />
+      <DrawerItem
+        label="메모리"
+        onPress={() =>
+          goToStack("tabstack", {
+            screen: "memorystack",
+            params: {
+              screen: "memorylist",
+            },
+          })
+        }
+      />
+      <DrawerItem
+        label="에누리"
+        onPress={() =>
+          goToStack("tabstack", {
+            screen: "storestack",
+            params: {
+              screen: "storetab",
+              params: {
+                screen: "storea",
+              },
+            },
+          })
+        }
+      />
+      <DrawerItem
+        label="다나와"
+        onPress={() =>
+          goToStack("tabstack", {
+            screen: "storestack",
+            params: {
+              screen: "storetab",
+              params: {
+                screen: "storeb",
+              },
+            },
+          })
+        }
+      />
       <DrawerItem label="사진 리스트" onPress={() => goToStack("imagestack")} />
       <DrawerItem
         label="이 앱에 대하여"
